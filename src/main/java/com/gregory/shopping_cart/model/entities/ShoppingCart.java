@@ -1,8 +1,5 @@
 package com.gregory.shopping_cart.model.entities;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
