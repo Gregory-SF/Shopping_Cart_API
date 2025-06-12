@@ -13,6 +13,10 @@ public class ProductController {
 		service.create(produto);
 	}
 	
+	public void delete(Product produto) {
+		service.delete(produto);
+	}
+	
 	public List<Product> getAll() {
 		return service.getAll();
 	}
