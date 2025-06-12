@@ -12,12 +12,20 @@ public class ProductController {
 	public void create(Product produto) {
 		service.create(produto);
 	}
+
+	public void update(Product product, Product newProduct) {
+		service.update(product, newProduct);
+	}
 	
 	public void delete(Product produto) {
 		service.delete(produto);
 	}
 	
-	public List<Product> getAll() {
+	public List<Product> findAll() {
 		return service.getAll();
+	}
+	
+	public Product findById(Long id) {
+		return service.findById(id);
 	}
 }
