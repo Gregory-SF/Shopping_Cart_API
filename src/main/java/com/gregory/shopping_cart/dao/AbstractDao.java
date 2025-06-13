@@ -19,17 +19,22 @@ public interface AbstractDao<T> {
 		close();
 	};
 
-	default T getById(Class<T> dao ,Long id) {
+	default T findById(Class<T> dao ,Long id) {
 		T obj = em.find(dao,id);
 		close();
 		return obj;
 	};
 		
-	default List<T> getAll(String tableName, Class<T> className){
+	default List<T> findAll(String tableName, Class<T> className){
 		return em.createNativeQuery("SELECT * FROM " + tableName, className).getResultList();
 	}
 	
-	public void update();
+	default void update(T object) {
+		em.getTransaction().begin();
+		em.merge(object);
+		em.getTransaction().commit();
+		close();
+	}
 	
 	default void delete(T object) {
 		em.getTransaction().begin();
