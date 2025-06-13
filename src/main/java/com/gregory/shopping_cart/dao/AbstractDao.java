@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.gregory.shopping_cart.model.entities.Product;
+
 public interface AbstractDao<T> {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("shoppingcart");
 	EntityManager em = emf.createEntityManager();
@@ -22,8 +24,10 @@ public interface AbstractDao<T> {
 		close();
 		return obj;
 	};
-	
-	public List<T> getAll();
+		
+	default List<T> getAll(String tableName, Class<T> className){
+		return em.createNativeQuery("SELECT * FROM " + tableName, className).getResultList();
+	}
 	
 	public void update();
 	
