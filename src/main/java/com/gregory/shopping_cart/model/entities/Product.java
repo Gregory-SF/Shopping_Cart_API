@@ -22,6 +22,9 @@ public class Product {
 		this.type = type;
 		this.unitValue = unitValue;
 	}
+	
+	public Product () {
+	}
 
 	public Long getId() {
 		return id;
