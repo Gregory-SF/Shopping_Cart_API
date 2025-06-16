@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Stock {
@@ -11,8 +13,12 @@ public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Product product;
+	
 	private Integer quantity;
+	
+	@OneToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
 	
 	public Stock(Product product, Integer quantity) {
 		this.product = product;
