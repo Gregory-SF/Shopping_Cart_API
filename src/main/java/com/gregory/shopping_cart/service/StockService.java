@@ -1,6 +1,3 @@
-
-
-
 package com.gregory.shopping_cart.service;
 
 import java.util.List;
@@ -87,5 +84,11 @@ public class StockService {
 				throw new NoProductException(e.getMessage());
 			}
 		} else throw new InvalidValuesException("Invalid values!");
+	}
+	
+	public void sell(Long productId, Integer quantity) {
+		Stock dbStock = dao.findByProductId(productId);
+		dbStock.sell(quantity);
+		dao.update(dbStock);
 	}
 }
