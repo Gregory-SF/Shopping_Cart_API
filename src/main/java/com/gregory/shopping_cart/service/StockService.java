@@ -28,19 +28,25 @@ public class StockService {
 		return dao.findAll("Stock", Stock.class);
 	}
 
-	public void update(Stock stock, Stock newStock) {
-//		if(stockIsValid(newStock)) {
-//			try {
-//				Stock dbStock = findByAttributes(stock);
-//				dbStock.setName(newStock.getName());
-//				dbStock.setType(newStock.getType());
-//				dbStock.setUnitValue(newStock.getUnitValue());
-//				dao.update(dbStock);
-//			} catch (NoResultException e){
-//				throw new NoStockException(e.getMessage());
-//			}
-//		}	
+	public void update(Stock stock) {
+		validateStock(stock);
+		try {
+			Stock dbStock = findById(stock.getId());
+			dbStock.setQuantity(stock.getQuantity());
+			dao.update(dbStock);
+		} catch (NoResultException e){
+			throw new NoResultException(e.getMessage());
+		}
 	}
+	
+	public void update(Long id, Integer quantity) {
+		Stock dbStock = dao.findByProductId(id);
+		if(dbStock != null) {
+			dbStock.setQuantity(quantity);
+			dao.update(dbStock);
+		} else throw new NoResultException("This product is not on stock!");
+	}
+
 
 	public Stock findById(Long id) throws NoResultException {
 		Stock dbStock = dao.findById(Stock.class, id);

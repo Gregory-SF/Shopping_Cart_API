@@ -12,8 +12,12 @@ public class StockController {
 		service.create(stock);
 	}
 
-	public void update(Stock stock, Stock newStock) {
-		service.update(stock, newStock);
+	public void updateByProductId(Long id, Integer quantity) {
+		service.update(id, quantity);
+	}
+
+	public void update(Stock stock) {
+		service.update(stock);
 	}
 	
 	public void delete(Long id) {
