@@ -17,7 +17,8 @@ public class StockController {
 	}
 
 	public void update(Stock stock) {
-		service.update(stock);
+		if(stock.getId() != null) service.update(stock);
+		else System.out.println("Insert an Id to the stock!");
 	}
 	
 	public void delete(Long id) {
