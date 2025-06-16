@@ -12,8 +12,13 @@ public class StockController {
 		service.create(stock);
 	}
 
-	public void update(Stock stock, Stock newStock) {
-		service.update(stock, newStock);
+	public void updateByProductId(Long id, Integer quantity) {
+		service.update(id, quantity);
+	}
+
+	public void update(Stock stock) {
+		if(stock.getId() != null) service.update(stock);
+		else System.out.println("Insert an Id to the stock!");
 	}
 	
 	public void delete(Long id) {

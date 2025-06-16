@@ -16,12 +16,12 @@ public interface AbstractDao<T> {
 		em.getTransaction().begin();
 		em.persist(object);
 		em.getTransaction().commit();
-		close();
+//		close();
 	}
 
 	default T findById(Class<T> dao ,Long id) {
 		T obj = em.find(dao,id);
-		close();
+//		close();
 		return obj;
 	}
 		
@@ -33,14 +33,14 @@ public interface AbstractDao<T> {
 		em.getTransaction().begin();
 		em.merge(object);
 		em.getTransaction().commit();
-		close();
+//		close();
 	}
 	
 	default void delete(T object) {
 		em.getTransaction().begin();
 		em.remove(object);
 		em.getTransaction().commit();
-		close();
+//		close();
 	}
 	
 	default void close() {
