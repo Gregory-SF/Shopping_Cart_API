@@ -9,16 +9,16 @@ public class ProductController {
 
 	ProductService service = new ProductService();
 	
-	public void create(Product produto) {
-		service.create(produto);
+	public void create(Product product) {
+		service.create(product);
 	}
 
 	public void update(Product product, Product newProduct) {
 		service.update(product, newProduct);
 	}
 	
-	public void delete(Product produto) {
-		service.delete(produto);
+	public void delete(Product product) {
+		service.delete(product);
 	}
 	
 	public List<Product> findAll() {

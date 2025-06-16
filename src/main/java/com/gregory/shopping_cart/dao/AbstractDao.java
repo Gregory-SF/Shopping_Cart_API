@@ -17,13 +17,13 @@ public interface AbstractDao<T> {
 		em.persist(object);
 		em.getTransaction().commit();
 		close();
-	};
+	}
 
 	default T findById(Class<T> dao ,Long id) {
 		T obj = em.find(dao,id);
 		close();
 		return obj;
-	};
+	}
 		
 	default List<T> findAll(String tableName, Class<T> className){
 		return em.createNativeQuery("SELECT * FROM " + tableName, className).getResultList();
@@ -41,11 +41,11 @@ public interface AbstractDao<T> {
 		em.remove(object);
 		em.getTransaction().commit();
 		close();
-	};
+	}
 	
 	default void close() {
 		emf.close();
 		em.close();
-	};
+	}
 	
 }
