@@ -21,16 +21,20 @@ public class ShoppingCartController {
 		else System.out.println("Insert an Id to the shoppingCart!");
 	}
 	
-//	public void delete(Long id) {
-//		service.delete(id);
-//	}
+	public void delete(Long id) {
+		service.delete(id);
+	}
 	
 	public List<ShoppingCart> findAll() {
 		return service.findAll();
 	}
 	
-//	public ShoppingCart findById(Long id) {
-//		return service.findById(id);
-//	}
+	public ShoppingCart findById(Long id) {
+		return service.findById(id);
+	}
+	
+	public Double getTotalValue() {
+		return service.getTotalValue();
+	}
 
 }
