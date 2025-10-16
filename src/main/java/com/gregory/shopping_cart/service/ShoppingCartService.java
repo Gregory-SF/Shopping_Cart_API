@@ -91,4 +91,13 @@ public class ShoppingCartService {
 			}
 		} else throw new InvalidValuesException("Invalid values!");
 	}
+	
+	public Double getTotalValue() {
+		Double value = 0.0;
+		List<ShoppingCart> cart = findAll();
+		for (ShoppingCart shoppingCart : cart) {
+			value = value += shoppingCart.getProduct().getUnitValue() * shoppingCart.getQuantity();
+		}
+		return value;
+	}
 }
